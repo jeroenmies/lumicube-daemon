@@ -11,3 +11,5 @@ You can build this using Maven (either from the command-line, or e.g. using NetB
 The resulting .zip (containing all the JAR files) can either be extracted and run directly, or packaged with a JVM into an AppImage using build.sh.
 
 Note: This last step requires Docker (and therefore also root permissions).
+
+Grafster - This also only seems to work on x86 Linux, but the resulting AppImage works OK on Raspberry Pi
