@@ -11,7 +11,11 @@ import stat
 import subprocess
 import urllib.request
 
-DOWNLOAD_URL_PREFIX = 'https://www.abstractfoundry.com/lumicube/download/'
+DOWNLOAD_URL_PREFIX = 'https://github.com/grafster/lumicube-daemon/releases/download/'
+
+LATEST_VERSION_URL = 'https://raw.githubusercontent.com/grafster/lumicube-daemon/main/latest_version.txt'
+
+AUTUMN_IMAGE_URL_PREFIX = 'https://abstractfoundry.com/lumicube/download/'
 
 if os.geteuid() == 0:
     raise RuntimeError('Run this script as your own user, not as root / sudo.')
@@ -32,7 +36,7 @@ def set_default_executable_permissions(path):
 
 
 def platform_variant():
-    return 'arm' if 'arm' in platform.machine() else 'x64'
+    return 'arm' if 'aarch' in platform.machine() else 'x64'
 
 
 def install_system_dependencies():
@@ -74,13 +78,16 @@ def install_daemon():
 
     run('systemctl --user stop foundry-daemon.service', check=False, quiet=True)
     run('systemctl --user disable foundry-daemon.service', check=False, quiet=True)
-
-    version_url = DOWNLOAD_URL_PREFIX + 'latest_daemon.txt'
+    print ("getting version number from " + LATEST_VERSION_URL)
+    version_url = LATEST_VERSION_URL 
     with urllib.request.urlopen(version_url) as file:
         version = file.read().decode('utf-8').strip()
 
+    print ("Installing version " + version)
+
     daemon_name = 'Daemon-' + version + '-' + variant + '.AppImage'
-    binary_url = DOWNLOAD_URL_PREFIX + daemon_name
+    binary_url = DOWNLOAD_URL_PREFIX + version + '/' + daemon_name
+    print (binary_url)
     destination_path = os.path.join(software_directory, daemon_name)
     run('curl -fL ' + shlex.quote(binary_url) + ' > ' + destination_path)
     set_default_executable_permissions(destination_path)
@@ -195,7 +202,7 @@ def install_addon_packages():
     autumn_image = 'autumn.jpg'
     autumn_image_path = os.path.join(desktop_directory, autumn_image)
     run('curl -fL '
-        + shlex.quote(DOWNLOAD_URL_PREFIX + autumn_image)
+        + shlex.quote(AUTUMN_IMAGE_URL_PREFIX + autumn_image)
         + ' > ' + autumn_image_path)
 
 
