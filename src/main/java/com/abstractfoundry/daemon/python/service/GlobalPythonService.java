@@ -106,24 +106,6 @@ public class GlobalPythonService {
 		globalPool.submit(new LineReaderTask(process.getInputStream(), line -> logger.warn("{}.", line)));
 		globalPool.submit(new LineReaderTask(process.getErrorStream(), line -> logger.error("{}.", line)));
 
-		Exception cause = null;
-		for (var attempt = 0; attempt < 5; attempt++) {
-			try {
-				var response = (Map) target.path("ping").request()
-					.post(Entity.entity("{\"value\": 123}", MediaType.APPLICATION_JSON), Map.class);
-				if (response.get("result").equals(123)) {
-					return;
-				}
-			} catch (RuntimeException exception) {
-				cause = exception;
-			}
-			LockSupport.parkNanos(1_000_000_000L);
-		}
-		if (cause != null) {
-			logger.error("Failed to connect to service.", cause);
-		} else {
-			logger.error("Failed to connect to service.");
-		}
 	}
 
 	public void stop() {
