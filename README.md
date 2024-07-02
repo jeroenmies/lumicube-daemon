@@ -13,3 +13,14 @@ The resulting .zip (containing all the JAR files) can either be extracted and ru
 Note: This last step requires Docker (and therefore also root permissions).
 
 Grafster - This also only seems to work on x86 Linux, but the resulting AppImage works OK on Raspberry Pi
+
+## Maven
+
+The steps to build an image (example Daemon-1.10-SNAPSHOT) are:
+
+```
+sudo apt install maven
+mvn package
+cp target/Daemon-1.10-SNAPSHOT.zip .
+sudo ./build.sh Daemon-1.10-SNAPSHOT
+```

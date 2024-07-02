@@ -10,3 +10,13 @@ Thumbs.db
 # Daemon temporary files
 /target/
 /nbproject/
+
+### IntelliJ IDEA ###
+.idea
+classes/
+*.iws
+*.iml
+*.ipr
+out/
+!**/src/main/**/out/
+!**/src/test/**/out/

@@ -11,9 +11,9 @@ import stat
 import subprocess
 import urllib.request
 
-DOWNLOAD_URL_PREFIX = 'https://github.com/grafster/lumicube-daemon/releases/download/'
+DOWNLOAD_URL_PREFIX = 'https://github.com/jeroenmies/lumicube-daemon/releases/download/'
 
-LATEST_VERSION_URL = 'https://raw.githubusercontent.com/grafster/lumicube-daemon/main/latest_version.txt'
+LATEST_VERSION_URL = 'https://raw.githubusercontent.com/jeroenmies/lumicube-daemon/main/latest_version.txt'
 
 AUTUMN_IMAGE_URL_PREFIX = 'https://abstractfoundry.com/lumicube/download/'
 
