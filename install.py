@@ -15,7 +15,7 @@ DOWNLOAD_URL_PREFIX = 'https://github.com/jeroenmies/lumicube-daemon/releases/do
 
 LATEST_VERSION_URL = 'https://raw.githubusercontent.com/jeroenmies/lumicube-daemon/main/latest_version.txt'
 
-AUTUMN_IMAGE_URL_PREFIX = 'https://abstractfoundry.com/lumicube/download/'
+AUTUMN_IMAGE_URL_PREFIX = 'https://raw.githubusercontent.com/jeroenmies/lumicube-daemon/main/resources/'
 
 if os.geteuid() == 0:
     raise RuntimeError('Run this script as your own user, not as root / sudo.')
@@ -199,11 +199,11 @@ def install_addon_packages():
     run('unzip -o ' + vosk_model_path + ' -d ' + voice_directory)
     run('tar -zxvf ' + precise_engine_path + ' -C ' + voice_directory)
 
-#    autumn_image = 'autumn.jpg'
-#    autumn_image_path = os.path.join(desktop_directory, autumn_image)
-#    run('curl -fL '
-#        + shlex.quote(AUTUMN_IMAGE_URL_PREFIX + autumn_image)
-#        + ' > ' + autumn_image_path)
+   autumn_image = 'autumn.jpg'
+   autumn_image_path = os.path.join(desktop_directory, autumn_image)
+   run('curl -fL '
+       + shlex.quote(AUTUMN_IMAGE_URL_PREFIX + autumn_image)
+       + ' > ' + autumn_image_path)
 
 def upgrade_system():
     print('Upgrading system...', flush=True)
