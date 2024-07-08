@@ -205,12 +205,24 @@ def install_addon_packages():
 #        + shlex.quote(AUTUMN_IMAGE_URL_PREFIX + autumn_image)
 #        + ' > ' + autumn_image_path)
 
+def upgrade_system
+    print('Upgrading system...', flush=True)
+
+    apt_packages = ['python3-cffi', 'python3-numpy', 'python3-requests', 'python3-matplotlib', 'ffmpeg', 'espeak']
+    pip_packages = ['pyalsaaudio==0.9.0', 'pyttsx3==2.90', 'precise-runner==0.3.1', 'vosk==0.3.32']
+    run('sudo apt-get update')
+    run('sudo apt=get upgrade -y')
+    run('sudo apt install pulseaudio pulseaudio-utils python3-psutil libalsaplayer-dev portaudio19-dev')
+    run('sudo apt autoremove')
+    run('pip install --upgrade Flask')
+    run('pip install --upgrade Werkzeug')
 
 install_system_dependencies()
 configure_serial_port()
 install_daemon()
 configure_iptables_rules()
 install_addon_packages()
+upgrade_system()
 
 print('----------------------')
 print('Installation complete.')
