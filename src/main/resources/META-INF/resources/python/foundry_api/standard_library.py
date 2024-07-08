@@ -23,7 +23,7 @@ def _init(context):
 
 def _platform_variant():
     # return 'arm' if 'arm' in _platform.machine() else 'x64'
-    return 'arm' if 'aarch' in platform.machine() else 'x64'
+    return 'arm' if 'arm' in platform.machine() else 'arm' if 'aarch' in platform.machine() else 'x64'
 
 class _DaemonClient:
 
