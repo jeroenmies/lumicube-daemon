@@ -209,7 +209,7 @@ def upgrade_system():
     print('Upgrading system...', flush=True)
 
     run('sudo apt-get update')
-    run('sudo apt=get upgrade -y')
+    run('sudo apt-get upgrade -y')
     run('sudo apt install pulseaudio pulseaudio-utils python3-psutil libalsaplayer-dev portaudio19-dev')
     run('sudo apt autoremove')
     run('pip install --upgrade Flask')
