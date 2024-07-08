@@ -15,7 +15,7 @@ DOWNLOAD_URL_PREFIX = 'https://github.com/jeroenmies/lumicube-daemon/releases/do
 
 LATEST_VERSION_URL = 'https://raw.githubusercontent.com/jeroenmies/lumicube-daemon/main/latest_version.txt'
 
-AUTUMN_IMAGE_URL_PREFIX = 'https://raw.githubusercontent.com/jeroenmies/lumicube-daemon/main/resources/'
+AUTUMN_IMAGE_URL_PREFIX = 'https://raw.githubusercontent.com/jeroenmies/lumicube-daemon/main/src/main/resources/'
 
 if os.geteuid() == 0:
     raise RuntimeError('Run this script as your own user, not as root / sudo.')
