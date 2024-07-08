@@ -43,7 +43,7 @@ def install_system_dependencies():
     print('Installing system dependencies...', flush=True)
 
     apt_packages = ['curl', 'unzip', 'libfuse2', 'iptables', 'python3', 'python3-pip']
-    pip_packages = ['flask==2.1.2', 'waitress==2.1.1']
+    pip_packages = ['flask==3.0.3', 'werkzeug==3.0.3', 'waitress==2.1.1']
     run('sudo DEBIAN_FRONTEND=noninteractive apt update')
     run('sudo DEBIAN_FRONTEND=noninteractive apt install -y ' + ' '.join(apt_packages))
     run('yes 2>/dev/null | python3 -m pip install --upgrade pip')
@@ -205,11 +205,9 @@ def install_addon_packages():
 #        + shlex.quote(AUTUMN_IMAGE_URL_PREFIX + autumn_image)
 #        + ' > ' + autumn_image_path)
 
-def upgrade_system
+def upgrade_system():
     print('Upgrading system...', flush=True)
 
-    apt_packages = ['python3-cffi', 'python3-numpy', 'python3-requests', 'python3-matplotlib', 'ffmpeg', 'espeak']
-    pip_packages = ['pyalsaaudio==0.9.0', 'pyttsx3==2.90', 'precise-runner==0.3.1', 'vosk==0.3.32']
     run('sudo apt-get update')
     run('sudo apt=get upgrade -y')
     run('sudo apt install pulseaudio pulseaudio-utils python3-psutil libalsaplayer-dev portaudio19-dev')
