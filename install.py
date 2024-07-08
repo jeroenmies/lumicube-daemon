@@ -214,6 +214,7 @@ def upgrade_system():
     run('sudo apt autoremove')
     run('pip install --upgrade Flask')
     run('pip install --upgrade Werkzeug')
+    run('pip install --upgrade geopy')
 
 install_system_dependencies()
 configure_serial_port()
