@@ -199,9 +199,9 @@ def install_addon_packages():
     run('unzip -o ' + vosk_model_path + ' -d ' + voice_directory)
     run('tar -zxvf ' + precise_engine_path + ' -C ' + voice_directory)
 
-   autumn_image = 'autumn.jpg'
-   autumn_image_path = os.path.join(desktop_directory, autumn_image)
-   run('curl -fL '
+    autumn_image = 'autumn.jpg'
+    autumn_image_path = os.path.join(desktop_directory, autumn_image)
+    run('curl -fL '
        + shlex.quote(AUTUMN_IMAGE_URL_PREFIX + autumn_image)
        + ' > ' + autumn_image_path)
 
